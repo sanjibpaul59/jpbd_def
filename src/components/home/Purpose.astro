@@ -1,0 +1,21 @@
+---
+import SectionIntro from "../SectionIntro.astro";
+import { purpose } from "../../data/site";
+---
+
+<section id="purpose" class="section" aria-labelledby="purpose-title">
+  <div class="wrap">
+    <SectionIntro kicker="Purpose" title={purpose.title} titleId="purpose-title" />
+    <div class="purpose-grid">
+      <article>
+        <h3>Mission</h3>
+        <p>{purpose.mission}</p>
+      </article>
+      <div class="purpose-rule" role="separator" aria-hidden="true"></div>
+      <article>
+        <h3>Vision</h3>
+        <p>{purpose.vision}</p>
+      </article>
+    </div>
+  </div>
+</section>

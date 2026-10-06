@@ -1,0 +1,31 @@
+---
+import SectionIntro from "../SectionIntro.astro";
+import { programmes } from "../../data/site";
+---
+
+<section id="programmes" class="section" aria-labelledby="programmes-title">
+  <div class="wrap">
+    <SectionIntro
+      kicker="Programmes"
+      title="Culture, education, youth, and sustainable development"
+      titleId="programmes-title"
+    />
+    <div class="practice-grid">
+      {
+        programmes.map((programme) => (
+          <article>
+            <h3>{programme.title}</h3>
+            {programme.summary && <p>{programme.summary}</p>}
+            {programme.points && (
+              <ul>
+                {programme.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

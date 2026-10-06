@@ -1,0 +1,18 @@
+---
+import SectionIntro from "../SectionIntro.astro";
+import { contactEmail, takePart } from "../../data/site";
+---
+
+<section id="take-part" class="section section-ivory" aria-labelledby="take-part-title">
+  <div class="wrap">
+    <SectionIntro kicker="Take part" title={takePart.title} titleId="take-part-title" />
+    <p class="measure">{takePart.body}</p>
+    {
+      contactEmail && (
+        <p class="take-part-mail">
+          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        </p>
+      )
+    }
+  </div>
+</section>

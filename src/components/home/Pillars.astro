@@ -1,0 +1,27 @@
+---
+import SectionIntro from "../SectionIntro.astro";
+import { pillars } from "../../data/site";
+---
+
+<section id="pillars" class="section section-ivory" aria-labelledby="pillars-title">
+  <div class="wrap">
+    <SectionIntro
+      kicker="Focus"
+      title="Six pillars for a stronger partnership"
+      titleId="pillars-title"
+    />
+    <div class="pillar-grid">
+      {
+        pillars.map((pillar) => (
+          <article class="pillar">
+            <p class="pillar-num" aria-hidden="true">
+              {pillar.number}
+            </p>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.summary}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+---
+import SectionIntro from "../SectionIntro.astro";
+import { partnership } from "../../data/site";
+---
+
+<section id="partnership" class="section" aria-labelledby="partnership-title">
+  <div class="wrap">
+    <SectionIntro
+      kicker="Partnership"
+      title={partnership.title}
+      titleId="partnership-title"
+    />
+    <p class="measure">{partnership.body}</p>
+    <ul class="with-list">
+      {partnership.with.map((name) => <li>{name}</li>)}
+    </ul>
+  </div>
+</section>
