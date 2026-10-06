@@ -1,18 +1,116 @@
 ---
 import SectionIntro from "../SectionIntro.astro";
-import { contactEmail, takePart } from "../../data/site";
+import {
+  contactEmail,
+  joinEndpoint,
+  joinForm,
+  pillars,
+  takePart,
+} from "../../data/site";
 ---
 
-<section id="take-part" class="section section-ivory" aria-labelledby="take-part-title">
-  <div class="wrap">
-    <SectionIntro kicker="Take part" title={takePart.title} titleId="take-part-title" />
-    <p class="measure">{takePart.body}</p>
-    {
-      contactEmail && (
-        <p class="take-part-mail">
-          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-        </p>
-      )
-    }
+<section id="take-part" class="section" aria-labelledby="take-part-title">
+  <div class="wrap split split-start">
+    <img
+      class="split-media"
+      src={takePart.src}
+      alt={takePart.alt}
+      width="1152"
+      height="864"
+    />
+    <div>
+      <SectionIntro
+        kicker="Take part"
+        title={takePart.title}
+        titleId="take-part-title"
+      />
+      <p>{takePart.body}</p>
+      <form class="join-form" data-endpoint={joinEndpoint} novalidate>
+        <p class="join-error" data-send-error hidden>{joinForm.sendError}</p>
+        <label>
+          Name
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label>
+          Affiliation
+          <input type="text" name="affiliation" autocomplete="organization" />
+        </label>
+        <label>
+          Area of interest
+          <select name="interest" required>
+            <option value="" disabled selected>Choose an area</option>
+            <option>{joinForm.interestGeneral}</option>
+            {pillars.map((pillar) => <option>{pillar.title}</option>)}
+          </select>
+        </label>
+        <label>
+          Why you want to join
+          <textarea name="purpose" rows="5" required></textarea>
+        </label>
+        <button class="join-submit" type="submit">{joinForm.submitLabel}</button>
+      </form>
+      <div class="join-thanks" data-join-thanks hidden tabindex="-1">
+        <h3>{joinForm.thanksTitle}</h3>
+        <p>{joinForm.thanksBody}</p>
+      </div>
+      {
+        contactEmail && (
+          <p class="take-part-mail">
+            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+          </p>
+        )
+      }
+    </div>
   </div>
 </section>
+
+<script>
+  const form = document.querySelector(".join-form");
+  const thanks = document.querySelector("[data-join-thanks]");
+
+  if (form instanceof HTMLFormElement && thanks instanceof HTMLElement) {
+    const sendError = form.querySelector("[data-send-error]");
+    const submit = form.querySelector("[type='submit']");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (sendError instanceof HTMLElement) {
+        sendError.hidden = true;
+      }
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      if (submit instanceof HTMLButtonElement) {
+        submit.disabled = true;
+      }
+      const endpoint = form.dataset.endpoint ?? "";
+      try {
+        if (endpoint.startsWith("https://") || endpoint.startsWith("http://")) {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+          if (!response.ok) {
+            throw new Error("send");
+          }
+        }
+        form.hidden = true;
+        thanks.hidden = false;
+        thanks.focus();
+      } catch {
+        if (sendError instanceof HTMLElement) {
+          sendError.hidden = false;
+        }
+        if (submit instanceof HTMLButtonElement) {
+          submit.disabled = false;
+        }
+      }
+    });
+  }
+</script>

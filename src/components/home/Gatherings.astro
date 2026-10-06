@@ -3,12 +3,12 @@ import SectionIntro from "../SectionIntro.astro";
 import { gatherings, standingGatherings } from "../../data/site";
 ---
 
-<section id="gatherings" class="section section-ivory" aria-labelledby="gatherings-title">
+<section id="events" class="section" aria-labelledby="events-title">
   <div class="wrap">
     <SectionIntro
-      kicker="Gatherings"
-      title="Forums, dialogues, and exchange"
-      titleId="gatherings-title"
+      kicker="Events"
+      title="Upcoming gatherings"
+      titleId="events-title"
     />
     <p class="measure">
       The Forum brings people together through forums, policy dialogues, academic
@@ -16,24 +16,26 @@ import { gatherings, standingGatherings } from "../../data/site";
     </p>
     {
       gatherings.length > 0 && (
-        <ul class="schedule">
+        <div class="event-grid">
           {gatherings.map((item) => (
-            <li>
-              <p class="schedule-when">
-                {item.when}
-                {item.place ? ` · ${item.place}` : ""}
-              </p>
-              <h3>{item.title}</h3>
-              <p>{item.summary}</p>
-            </li>
+            <article class="event-card">
+              <img src={item.src} alt={item.alt} width="1280" height="720" />
+              <div class="event-body">
+                <p class="schedule-when">
+                  {item.when} · {item.place}
+                </p>
+                <h3>{item.title}</h3>
+                <p>{item.summary}</p>
+              </div>
+            </article>
           ))}
-        </ul>
+        </div>
       )
     }
     <div class="pillar-grid standing-grid">
       {
         standingGatherings.map((item) => (
-          <article class="pillar">
+          <article class="pillar pillar-note">
             <h3>{item.title}</h3>
             <p>{item.summary}</p>
           </article>

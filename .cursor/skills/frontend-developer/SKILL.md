@@ -26,6 +26,8 @@ A new page is a new file in `src/pages/` plus a link in `nav` inside `src/data/s
 
 Use the logo palette: crimson `#A81E27`, forest `#164532`, deep forest `#0E3324`, antique gold `#C4A176`, ink `#1C2822`, ivory `#F6F3EE`, and a white page background. Cormorant Garamond for headings. Source Sans 3 for text and navigation. Gold is for hairlines and for text on deep forest. Do not use gold for small text on white.
 
-Do not invent people, statistics, dates, partner logos, or a contact address. When `gatherings` or `bulletin` in `src/data/site.ts` is empty, render the standing copy already in that file. Do not render an empty-state message.
+Photographs in `public/images/` and the sample slides, gallery, gatherings, and section pictures in `src/data/site.ts` are placeholders. Replace them with real photographs and published programmes. Do not invent people, statistics, partner logos, or a contact address. When `bulletin` is empty, render the standing news copy beside its photograph. Do not render an empty-state message.
+
+The Take Part form shows a thank-you in the browser for the client demo. `joinEndpoint` stays empty until the Forum provides a form-service URL. When that URL is set, submit also posts the fields there. Do not store submissions in the browser, and do not claim an email was sent.
 
 Do not add a UI library. Add an interactive island only when a later feature needs client state.

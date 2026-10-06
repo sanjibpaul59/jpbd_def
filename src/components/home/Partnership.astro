@@ -4,15 +4,24 @@ import { partnership } from "../../data/site";
 ---
 
 <section id="partnership" class="section" aria-labelledby="partnership-title">
-  <div class="wrap">
-    <SectionIntro
-      kicker="Partnership"
-      title={partnership.title}
-      titleId="partnership-title"
+  <div class="wrap split">
+    <img
+      class="split-media"
+      src={partnership.src}
+      alt={partnership.alt}
+      width="1152"
+      height="864"
     />
-    <p class="measure">{partnership.body}</p>
-    <ul class="with-list">
-      {partnership.with.map((name) => <li>{name}</li>)}
-    </ul>
+    <div>
+      <SectionIntro
+        kicker="Partnership"
+        title={partnership.title}
+        titleId="partnership-title"
+      />
+      <p>{partnership.body}</p>
+      <ul class="with-list">
+        {partnership.with.map((name) => <li>{name}</li>)}
+      </ul>
+    </div>
   </div>
 </section>

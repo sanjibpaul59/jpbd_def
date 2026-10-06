@@ -14,11 +14,20 @@ import { pillars } from "../../data/site";
       {
         pillars.map((pillar) => (
           <article class="pillar">
-            <p class="pillar-num" aria-hidden="true">
-              {pillar.number}
-            </p>
-            <h3>{pillar.title}</h3>
-            <p>{pillar.summary}</p>
+            <img
+              class="pillar-photo"
+              src={pillar.src}
+              alt={pillar.alt}
+              width="1000"
+              height="750"
+            />
+            <div class="pillar-body">
+              <p class="pillar-num" aria-hidden="true">
+                {pillar.number}
+              </p>
+              <h3>{pillar.title}</h3>
+              <p>{pillar.summary}</p>
+            </div>
           </article>
         ))
       }

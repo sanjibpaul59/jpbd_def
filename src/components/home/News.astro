@@ -3,22 +3,31 @@ import SectionIntro from "../SectionIntro.astro";
 import { bulletin, news } from "../../data/site";
 ---
 
-<section id="news" class="section" aria-labelledby="news-title">
-  <div class="wrap">
-    <SectionIntro kicker="News" title={news.title} titleId="news-title" />
-    <p class="measure">{news.body}</p>
-    {
-      bulletin.length > 0 && (
-        <ul class="schedule">
-          {bulletin.map((item) => (
-            <li>
-              <p class="schedule-when">{item.date}</p>
-              <h3>{item.title}</h3>
-              <p>{item.summary}</p>
-            </li>
-          ))}
-        </ul>
-      )
-    }
+<section id="news" class="section section-ivory" aria-labelledby="news-title">
+  <div class="wrap split">
+    <img
+      class="split-media"
+      src={news.src}
+      alt={news.alt}
+      width="1152"
+      height="864"
+    />
+    <div>
+      <SectionIntro kicker="News" title={news.title} titleId="news-title" />
+      <p>{news.body}</p>
+      {
+        bulletin.length > 0 && (
+          <ul class="schedule">
+            {bulletin.map((item) => (
+              <li>
+                <p class="schedule-when">{item.date}</p>
+                <h3>{item.title}</h3>
+                <p>{item.summary}</p>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
   </div>
 </section>

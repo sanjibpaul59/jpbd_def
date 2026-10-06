@@ -1,0 +1,14 @@
+---
+import type { ImageBreak } from "../../data/site";
+
+interface Props {
+  item: ImageBreak;
+}
+
+const { item } = Astro.props;
+---
+
+<figure class="image-break">
+  <img src={item.src} alt={item.alt} width="1280" height="720" />
+  <figcaption>{item.caption}</figcaption>
+</figure>

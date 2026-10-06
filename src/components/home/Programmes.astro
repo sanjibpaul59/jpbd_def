@@ -10,19 +10,33 @@ import { programmes } from "../../data/site";
       title="Culture, education, youth, and sustainable development"
       titleId="programmes-title"
     />
-    <div class="practice-grid">
+    <div class="programme-list">
       {
-        programmes.map((programme) => (
-          <article>
-            <h3>{programme.title}</h3>
-            {programme.summary && <p>{programme.summary}</p>}
-            {programme.points && (
-              <ul>
-                {programme.points.map((point) => (
-                  <li>{point}</li>
-                ))}
-              </ul>
-            )}
+        programmes.map((programme, index) => (
+          <article
+            class:list={[
+              "programme-row",
+              { "programme-row-flip": index % 2 === 1 },
+            ]}
+          >
+            <img
+              class="split-media"
+              src={programme.src}
+              alt={programme.alt}
+              width="1152"
+              height="864"
+            />
+            <div class="programme-copy">
+              <h3>{programme.title}</h3>
+              {programme.summary && <p>{programme.summary}</p>}
+              {programme.points && (
+                <ul>
+                  {programme.points.map((point) => (
+                    <li>{point}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </article>
         ))
       }

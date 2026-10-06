@@ -7,12 +7,24 @@ import { purpose } from "../../data/site";
   <div class="wrap">
     <SectionIntro kicker="Purpose" title={purpose.title} titleId="purpose-title" />
     <div class="purpose-grid">
-      <article>
+      <article class="purpose-card">
+        <img
+          src={purpose.missionImage.src}
+          alt={purpose.missionImage.alt}
+          width="1152"
+          height="864"
+        />
         <h3>Mission</h3>
         <p>{purpose.mission}</p>
       </article>
       <div class="purpose-rule" role="separator" aria-hidden="true"></div>
-      <article>
+      <article class="purpose-card">
+        <img
+          src={purpose.visionImage.src}
+          alt={purpose.visionImage.alt}
+          width="1152"
+          height="864"
+        />
         <h3>Vision</h3>
         <p>{purpose.vision}</p>
       </article>

@@ -1,0 +1,24 @@
+---
+import SectionIntro from "../SectionIntro.astro";
+import { gallery } from "../../data/site";
+---
+
+<section id="gallery" class="section section-ivory" aria-labelledby="gallery-title">
+  <div class="wrap">
+    <SectionIntro
+      kicker="Gallery"
+      title="Scenes from the exchange"
+      titleId="gallery-title"
+    />
+    <div class="gallery-grid">
+      {
+        gallery.map((item) => (
+          <figure>
+            <img src={item.src} alt={item.alt} width="1152" height="864" />
+            <figcaption>{item.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

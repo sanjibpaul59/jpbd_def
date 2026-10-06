@@ -1,14 +1,17 @@
 ---
 import About from "./About.astro";
 import Closing from "./Closing.astro";
+import Gallery from "./Gallery.astro";
 import Gatherings from "./Gatherings.astro";
 import Hero from "./Hero.astro";
+import ImageBreak from "./ImageBreak.astro";
 import News from "./News.astro";
 import Partnership from "./Partnership.astro";
 import Pillars from "./Pillars.astro";
 import Programmes from "./Programmes.astro";
 import Purpose from "./Purpose.astro";
 import TakePart from "./TakePart.astro";
+import { breakAfterEvents, breakAfterProgrammes } from "../../data/site";
 ---
 
 <Hero />
@@ -16,7 +19,10 @@ import TakePart from "./TakePart.astro";
 <Purpose />
 <Pillars />
 <Programmes />
+<ImageBreak item={breakAfterProgrammes} />
+<Gallery />
 <Gatherings />
+<ImageBreak item={breakAfterEvents} />
 <Partnership />
 <News />
 <TakePart />
