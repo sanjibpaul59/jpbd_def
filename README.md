@@ -1,12 +1,13 @@
 # Japan Bangladesh Development Exchange Forum
 
-
 ## Requirements
 
 - [Node.js](https://nodejs.org/) 20.19+ or 22.12+
 - npm
 
-## Run locally
+## How to Run locally
+
+In your terminal, type the following commands sequentially
 
 ```bash
 npm install
