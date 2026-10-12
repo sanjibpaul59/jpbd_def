@@ -1,6 +1,45 @@
 <script setup lang="ts">
+import { onUnmounted, reactive } from "vue";
 import { programmes } from "../../data/site";
 import SectionIntro from "../SectionIntro.vue";
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const revealed = reactive<Record<string, boolean>>(
+  Object.fromEntries(
+    programmes
+      .filter((programme) => programme.points)
+      .map((programme) => [programme.title, reduceMotion]),
+  ),
+);
+
+const observer = reduceMotion
+  ? undefined
+  : new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || !(entry.target instanceof HTMLElement)) {
+            return;
+          }
+          const title = entry.target.dataset.title;
+          if (title) {
+            revealed[title] = true;
+          }
+          observer?.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+function watchList(element: Element | null): void {
+  if (element instanceof HTMLElement) {
+    observer?.observe(element);
+  }
+}
+
+onUnmounted(() => {
+  observer?.disconnect();
+});
 </script>
 
 <template>
@@ -28,8 +67,20 @@ import SectionIntro from "../SectionIntro.vue";
           <div class="programme-copy">
             <h3>{{ programme.title }}</h3>
             <p v-if="programme.summary">{{ programme.summary }}</p>
-            <ul v-if="programme.points">
-              <li v-for="point in programme.points" :key="point">{{ point }}</li>
+            <ul
+              v-if="programme.points"
+              :ref="watchList"
+              class="point-list"
+              :class="{ 'is-shown': revealed[programme.title] }"
+              :data-title="programme.title"
+            >
+              <li
+                v-for="(point, pointIndex) in programme.points"
+                :key="point"
+                :style="{ '--i': pointIndex }"
+              >
+                {{ point }}
+              </li>
             </ul>
           </div>
         </article>
