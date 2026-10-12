@@ -1,26 +1,26 @@
 # Japan Bangladesh Development Exchange Forum
 
+Next.js site for the forum home page.
+
 ## Requirements
 
 - [Node.js](https://nodejs.org/) 20.19+ or 22.12+
 - npm
 
-## How to Run locally
-
-In your terminal, type the following commands sequentially
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the address Vite prints, usually http://localhost:5173/.
+Open http://localhost:3000/.
 
 ## Production build
 
 ```bash
 npm run build
-npm run preview
+npm run start
 ```
 
-`npm run build` type-checks the project and writes the site to `dist/`. `npm run preview` serves that build locally.
+`npm run build` type-checks the project and writes the production build to `.next/`. `npm run start` serves that build locally.
