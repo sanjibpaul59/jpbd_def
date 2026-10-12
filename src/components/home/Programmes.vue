@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { onUnmounted, reactive } from "vue";
 import { programmes } from "../../data/site";
 import SectionIntro from "../SectionIntro.vue";
+import { onUnmounted, reactive, type ComponentPublicInstance } from "vue";
+
+function watchList(element: Element | ComponentPublicInstance | null): void {
+  if (element instanceof HTMLElement) {
+    observer?.observe(element);
+  }
+}
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
