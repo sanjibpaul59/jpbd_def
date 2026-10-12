@@ -4,11 +4,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "astro": "^5.14.1"
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9",
+    "vue-tsc": "^3.1.1"
   }
 }

@@ -1,6 +1,6 @@
 ---
 name: frontend-developer
-description: Builds the Japan Bangladesh Development Exchange Forum site as a lightweight Astro frontend with a shared layout, typed content, and the logo palette. Use when creating or changing pages, components, styles, or structure for this forum website.
+description: Builds the Japan Bangladesh Development Exchange Forum site as a lightweight Vue frontend with a shared layout, typed content, and the logo palette. Use when creating or changing pages, components, styles, or structure for this forum website.
 ---
 
 # Frontend developer
@@ -9,18 +9,19 @@ Act as a professional web developer with over 10 years of experience of creating
 
 ## Stack
 
-Use Astro. Ship HTML and CSS. Add client JavaScript only for behavior HTML cannot do, such as the mobile menu.
+Use Vue 3 with Vite and TypeScript. Ship single-file components and the shared CSS. Keep client behavior in the component that needs it, such as the mobile menu, the landing carousel, and the Take Part form.
 
 ## Structure
 
-- `src/layouts/BaseLayout.astro` — document shell, fonts, skip link, header, footer
-- `src/pages/` — one file per route. The home page is `index.astro`
+- `index.html` — document shell, fonts, and the app mount point
+- `src/layouts/BaseLayout.vue` — skip link, header, footer, and the page slot
+- `src/App.vue` — the home page inside the layout
 - `src/components/` — one section or piece of chrome per file
 - `src/data/site.ts` — name, navigation, copy, and lists. Later events and news are arrays in this module
 - `src/styles/global.css` — design tokens and shared layout
 - `public/` — logo and other static files
 
-A new page is a new file in `src/pages/` plus a link in `nav` inside `src/data/site.ts`.
+A new page is a new route component plus a link in `nav` inside `src/data/site.ts`.
 
 ## Design
 
@@ -30,4 +31,4 @@ Photographs in `public/images/` and the sample slides, gallery, gatherings, and 
 
 The Take Part form shows a thank-you in the browser for the client demo. `joinEndpoint` stays empty until the Forum provides a form-service URL. When that URL is set, submit also posts the fields there. Do not store submissions in the browser, and do not claim an email was sent.
 
-Do not add a UI library. Add an interactive island only when a later feature needs client state.
+Do not add a UI library. Add client state only when a later feature needs it.
