@@ -90,7 +90,7 @@ export function SiteHeader() {
         </nav>
         <fieldset className="lang-switch">
           <legend className="visually-hidden">{copy.chrome.language}</legend>
-          <label>
+          <label onClick={() => selectLanguage("en")}>
             <input
               type="radio"
               name="language"
@@ -100,7 +100,7 @@ export function SiteHeader() {
             />
             {copy.chrome.languageEnglish}
           </label>
-          <label>
+          <label onClick={() => selectLanguage("ja")}>
             <input
               type="radio"
               name="language"
