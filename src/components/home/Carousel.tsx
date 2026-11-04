@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { slides } from "@/src/data/site";
+import type { CopyProps } from "@/src/data/site";
 
-export function Carousel() {
+export function Carousel({ copy }: CopyProps) {
+  const slides = copy.slides;
   const [index, setIndex] = useState(0);
   const indexRef = useRef(0);
   const timer = useRef(0);
@@ -69,7 +70,7 @@ export function Carousel() {
           <button
             type="button"
             data-prev
-            aria-label="Previous photograph"
+            aria-label={copy.chrome.previousPhoto}
             onClick={() => show(index - 1)}
           >
             <span aria-hidden="true">‹</span>
@@ -91,7 +92,7 @@ export function Carousel() {
           <button
             type="button"
             data-next
-            aria-label="Next photograph"
+            aria-label={copy.chrome.nextPhoto}
             onClick={() => show(index + 1)}
           >
             <span aria-hidden="true">›</span>

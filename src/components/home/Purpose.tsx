@@ -1,32 +1,36 @@
-import { purpose } from "@/src/data/site";
+import type { CopyProps } from "@/src/data/site";
 import { SectionIntro } from "@/src/components/SectionIntro";
 
-export function Purpose() {
+export function Purpose({ copy }: CopyProps) {
   return (
     <section id="purpose" className="section" aria-labelledby="purpose-title">
       <div className="wrap">
-        <SectionIntro kicker="Purpose" title={purpose.title} titleId="purpose-title" />
+        <SectionIntro
+          kicker={copy.purpose.kicker}
+          title={copy.purpose.title}
+          titleId="purpose-title"
+        />
         <div className="purpose-grid">
           <article className="purpose-card">
             <img
-              src={purpose.missionImage.src}
-              alt={purpose.missionImage.alt}
+              src={copy.purpose.missionImage.src}
+              alt={copy.purpose.missionImage.alt}
               width={1152}
               height={864}
             />
-            <h3>Mission</h3>
-            <p>{purpose.mission}</p>
+            <h3>{copy.purpose.missionLabel}</h3>
+            <p>{copy.purpose.mission}</p>
           </article>
           <div className="purpose-rule" role="separator" aria-hidden="true" />
           <article className="purpose-card">
             <img
-              src={purpose.visionImage.src}
-              alt={purpose.visionImage.alt}
+              src={copy.purpose.visionImage.src}
+              alt={copy.purpose.visionImage.alt}
               width={1152}
               height={864}
             />
-            <h3>Vision</h3>
-            <p>{purpose.vision}</p>
+            <h3>{copy.purpose.visionLabel}</h3>
+            <p>{copy.purpose.vision}</p>
           </article>
         </div>
       </div>

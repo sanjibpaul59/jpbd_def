@@ -1,17 +1,17 @@
-import { pillars } from "@/src/data/site";
+import type { CopyProps } from "@/src/data/site";
 import { SectionIntro } from "@/src/components/SectionIntro";
 
-export function Pillars() {
+export function Pillars({ copy }: CopyProps) {
   return (
     <section id="pillars" className="section section-ivory" aria-labelledby="pillars-title">
       <div className="wrap">
         <SectionIntro
-          kicker="Focus"
-          title="Six pillars for a stronger partnership"
+          kicker={copy.pillarsHeading.kicker}
+          title={copy.pillarsHeading.title}
           titleId="pillars-title"
         />
         <div className="pillar-grid">
-          {pillars.map((pillar) => (
+          {copy.pillars.map((pillar) => (
             <article key={pillar.number} className="pillar">
               <img
                 className="pillar-photo"

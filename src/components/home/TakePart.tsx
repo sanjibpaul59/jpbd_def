@@ -1,16 +1,11 @@
 "use client";
 
 import { useRef, useState } from "react";
-import {
-  contactEmail,
-  joinEndpoint,
-  joinForm,
-  pillars,
-  takePart,
-} from "@/src/data/site";
+import type { CopyProps } from "@/src/data/site";
 import { SectionIntro } from "@/src/components/SectionIntro";
 
-export function TakePart() {
+export function TakePart({ copy }: CopyProps) {
+  const { contactEmail, joinEndpoint, joinForm, pillars, takePart } = copy;
   const form = useRef<HTMLFormElement>(null);
   const thanks = useRef<HTMLDivElement>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -56,7 +51,7 @@ export function TakePart() {
           height={864}
         />
         <div>
-          <SectionIntro kicker="Take part" title={takePart.title} titleId="take-part-title" />
+          <SectionIntro kicker={takePart.kicker} title={takePart.title} titleId="take-part-title" />
           <p>{takePart.body}</p>
           {submitted ? (
             <div ref={thanks} className="join-thanks" tabIndex={-1}>
@@ -67,22 +62,22 @@ export function TakePart() {
             <form ref={form} className="join-form" noValidate onSubmit={onSubmit}>
               {sendFailed ? <p className="join-error">{joinForm.sendError}</p> : null}
               <label>
-                Name
+                {joinForm.nameLabel}
                 <input type="text" name="name" autoComplete="name" required />
               </label>
               <label>
-                Email
+                {joinForm.emailLabel}
                 <input type="email" name="email" autoComplete="email" required />
               </label>
               <label>
-                Affiliation
+                {joinForm.affiliationLabel}
                 <input type="text" name="affiliation" autoComplete="organization" />
               </label>
               <label>
-                Area of interest
+                {joinForm.interestLabel}
                 <select name="interest" required defaultValue="">
                   <option value="" disabled>
-                    Choose an area
+                    {joinForm.interestPlaceholder}
                   </option>
                   <option>{joinForm.interestGeneral}</option>
                   {pillars.map((pillar) => (
@@ -91,7 +86,7 @@ export function TakePart() {
                 </select>
               </label>
               <label>
-                Why you want to join
+                {joinForm.purposeLabel}
                 <textarea name="purpose" rows={5} required />
               </label>
               <button className="join-submit" type="submit" disabled={sending}>

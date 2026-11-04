@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
-import { programmes } from "@/src/data/site";
+import type { CopyProps } from "@/src/data/site";
 import { SectionIntro } from "@/src/components/SectionIntro";
 
-export function Programmes() {
+export function Programmes({ copy }: CopyProps) {
+  const programmes = copy.programmes;
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -44,14 +45,14 @@ export function Programmes() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [programmes]);
 
   return (
     <section id="programmes" className="section" aria-labelledby="programmes-title">
       <div className="wrap">
         <SectionIntro
-          kicker="Programmes"
-          title="Culture, education, youth, and sustainable development"
+          kicker={copy.programmesHeading.kicker}
+          title={copy.programmesHeading.title}
           titleId="programmes-title"
         />
         <div className="programme-list">

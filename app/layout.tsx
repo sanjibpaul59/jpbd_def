@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Crimson_Text } from "next/font/google";
+import { Crimson_Text, Noto_Serif_JP } from "next/font/google";
 import { SiteFooter } from "@/src/components/SiteFooter";
 import { SiteHeader } from "@/src/components/SiteHeader";
-import { forumName } from "@/src/data/site";
+import { requestLocale } from "@/src/data/locale";
+import { getCopy } from "@/src/data/site";
 import "@/src/styles/global.css";
 
 const crimsonText = Crimson_Text({
@@ -13,30 +14,37 @@ const crimsonText = Crimson_Text({
   variable: "--font-crimson",
 });
 
-const description =
-  "The Japan Bangladesh Development Exchange Forum builds friendship, cooperation, and co-prosperity between Japan and Bangladesh.";
+const notoSerifJp = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+  preload: false,
+  variable: "--font-jp",
+});
 
-export const metadata: Metadata = {
-  title: forumName,
-  description,
-  icons: { icon: "/assets/logo_jpbddef.jpeg" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const copy = getCopy(await requestLocale());
+  return {
+    title: copy.forumName,
+    description: copy.description,
+    icons: { icon: "/assets/logo_jpbddef.jpeg" },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#0E3324",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const copy = getCopy(await requestLocale());
+
   return (
-    <html lang="en" className={crimsonText.variable}>
+    <html lang={copy.locale} className={`${crimsonText.variable} ${notoSerifJp.variable}`}>
       <body id="top">
-        <a className="skip" href="#main">
-          Skip to content
-        </a>
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />

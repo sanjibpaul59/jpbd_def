@@ -1,4 +1,4 @@
-import { breakAfterEvents, breakAfterProgrammes } from "@/src/data/site";
+import type { CopyProps } from "@/src/data/site";
 import { About } from "@/src/components/home/About";
 import { Closing } from "@/src/components/home/Closing";
 import { Gallery } from "@/src/components/home/Gallery";
@@ -12,22 +12,22 @@ import { Programmes } from "@/src/components/home/Programmes";
 import { Purpose } from "@/src/components/home/Purpose";
 import { TakePart } from "@/src/components/home/TakePart";
 
-export function HomePage() {
+export function HomePage({ copy }: CopyProps) {
   return (
     <>
-      <Hero />
-      <About />
-      <Purpose />
-      <Pillars />
-      <Programmes />
-      <ImageBreak item={breakAfterProgrammes} />
-      <Gallery />
-      <Gatherings />
-      <ImageBreak item={breakAfterEvents} />
-      <Partnership />
-      <News />
-      <TakePart />
-      <Closing />
+      <Hero copy={copy} />
+      <About copy={copy} />
+      <Purpose copy={copy} />
+      <Pillars copy={copy} />
+      <Programmes copy={copy} />
+      <ImageBreak item={copy.breakAfterProgrammes} />
+      <Gallery copy={copy} />
+      <Gatherings copy={copy} />
+      <ImageBreak item={copy.breakAfterEvents} />
+      <Partnership copy={copy} />
+      <News copy={copy} />
+      <TakePart copy={copy} />
+      <Closing copy={copy} />
     </>
   );
 }
