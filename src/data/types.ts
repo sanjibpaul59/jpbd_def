@@ -66,6 +66,7 @@ export interface SiteContent {
   tagline: string;
   year: number;
   description: string;
+  keywords: string[];
   brandMain: string;
   brandSub: string;
   nav: NavItem[];
@@ -95,6 +96,24 @@ export interface SiteContent {
     body: string;
     src: string;
     alt: string;
+  };
+  organization: {
+    kicker: string;
+    title: string;
+    nameLabel: string;
+    name: string;
+    organizationLabel: string;
+    organization: string;
+    designationLabel: string;
+    designation: string;
+    phoneLabel: string;
+    phone: string;
+    phoneHref: string;
+    emailLabel: string;
+    addressLabel: string;
+    address: string;
+    websiteLabel: string;
+    website: string;
   };
   purpose: {
     kicker: string;

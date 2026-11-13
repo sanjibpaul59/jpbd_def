@@ -4,6 +4,7 @@ import { SiteFooter } from "@/src/components/SiteFooter";
 import { SiteHeader } from "@/src/components/SiteHeader";
 import { requestLocale } from "@/src/data/locale";
 import { getCopy } from "@/src/data/site";
+import { organizationJsonLd, pageMetadata, siteUrl } from "@/src/data/seo";
 import "@/src/styles/global.css";
 
 const crimsonText = Crimson_Text({
@@ -25,8 +26,8 @@ const notoSerifJp = Noto_Serif_JP({
 export async function generateMetadata(): Promise<Metadata> {
   const copy = getCopy(await requestLocale());
   return {
-    title: copy.forumName,
-    description: copy.description,
+    metadataBase: new URL(siteUrl),
+    ...pageMetadata(copy),
     icons: { icon: "/assets/logo_jpbddef.jpeg" },
   };
 }
@@ -41,10 +42,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const copy = getCopy(await requestLocale());
+  const jsonLd = JSON.stringify(organizationJsonLd()).replace(/</g, "\\u003c");
 
   return (
     <html lang={copy.locale} className={`${crimsonText.variable} ${notoSerifJp.variable}`}>
       <body id="top">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
