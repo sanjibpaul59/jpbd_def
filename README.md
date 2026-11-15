@@ -1,4 +1,4 @@
-# Japan Bangladesh Development Exchange Forum
+# Japan Bangladesh Exchange Forum
 
 Next.js site for the forum home page.
 

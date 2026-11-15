@@ -797,6 +797,30 @@ html[lang="ja"] .menu-toggle {
   font-weight: 600;
 }
 
+.org-list {
+  max-width: 46rem;
+  margin: 0.5rem 0 0;
+}
+
+.org-list div {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0.35rem 1.5rem;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--gold);
+}
+
+.org-list dt {
+  margin: 0;
+  color: var(--forest);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.org-list dd {
+  margin: 0;
+}
+
 .schedule {
   display: grid;
   gap: 1.25rem;
@@ -1139,6 +1163,11 @@ html[lang="ja"] .menu-toggle {
   .header-bar {
     gap: 0.7rem;
     min-height: 4.15rem;
+  }
+
+  .org-list div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
   }
 
   .lang-switch label + label {

@@ -6,6 +6,7 @@ import { Gatherings } from "@/src/components/home/Gatherings";
 import { Hero } from "@/src/components/home/Hero";
 import { ImageBreak } from "@/src/components/home/ImageBreak";
 import { News } from "@/src/components/home/News";
+import { Organization } from "@/src/components/home/Organization";
 import { Partnership } from "@/src/components/home/Partnership";
 import { Pillars } from "@/src/components/home/Pillars";
 import { Programmes } from "@/src/components/home/Programmes";
@@ -17,6 +18,7 @@ export function HomePage({ copy }: CopyProps) {
     <>
       <Hero copy={copy} />
       <About copy={copy} />
+      <Organization copy={copy} />
       <Purpose copy={copy} />
       <Pillars copy={copy} />
       <Programmes copy={copy} />
