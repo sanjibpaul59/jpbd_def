@@ -63,7 +63,7 @@ export function SiteHeader() {
           <span className="brand-mark-frame">
             <img
               className="brand-mark"
-              src="/assets/logo_jpbddef.jpeg"
+              src="/assets/jbdef_logo_updated.jpeg"
               alt=""
               width={1254}
               height={1254}
