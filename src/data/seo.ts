@@ -40,7 +40,7 @@ export function pageMetadata(copy: SiteContent): Metadata {
       type: "website",
       images: [
         {
-          url: "/assets/logo_jpbddef.jpeg",
+          url: "/assets/jbdef_logo_updated.jpeg",
           alt: socialTitle,
         },
       ],
@@ -49,7 +49,7 @@ export function pageMetadata(copy: SiteContent): Metadata {
       card: "summary",
       title: socialTitle,
       description: copy.description,
-      images: ["/assets/logo_jpbddef.jpeg"],
+      images: ["/assets/jbdef_logo_updated.jpeg"],
     },
     robots: {
       index: true,
@@ -65,7 +65,7 @@ export function organizationJsonLd() {
     name: "Japan Bangladesh Exchange Forum",
     alternateName: ["JBDEF", "日本・バングラデシュ交流会"],
     url: siteUrl,
-    logo: `${siteUrl}/assets/logo_jpbddef.jpeg`,
+    logo: `${siteUrl}/assets/jbdef_logo_updated.jpeg`,
     email: "m1023hikaruman@gmail.com",
     telephone: "+81-90-4072-2000",
     address: {

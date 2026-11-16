@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(siteUrl),
     ...pageMetadata(copy),
-    icons: { icon: "/assets/logo_jpbddef.jpeg" },
+    icons: { icon: "/assets/jbdef_logo_updated.jpeg" },
   };
 }
 

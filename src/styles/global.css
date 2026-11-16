@@ -204,10 +204,10 @@ button:focus-visible {
 }
 
 .brand-mark {
-  width: 84px;
+  width: 138%;
   max-width: none;
   height: auto;
-  margin: -5px 0 0 -16px;
+  margin: 0 0 0 -19%;
 }
 
 .brand-text {
@@ -370,7 +370,7 @@ html[lang="ja"] .menu-toggle {
 }
 
 .landing-logo {
-  width: min(100%, 160px);
+  width: min(100%, 240px);
   display: block;
   padding: 0.4rem;
   background: var(--white);
@@ -1193,7 +1193,7 @@ html[lang="ja"] .menu-toggle {
   }
 
   .landing-logo {
-    width: min(100%, 132px);
+    width: min(100%, 200px);
   }
 
   .landing-intro {

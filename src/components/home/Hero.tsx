@@ -8,7 +8,7 @@ export function Hero({ copy }: CopyProps) {
       <div className="wrap landing-intro">
         <img
           className="landing-logo"
-          src="/assets/logo_jpbddef.jpeg"
+          src="/assets/jbdef_logo_updated.jpeg"
           alt=""
           width={1254}
           height={1254}
